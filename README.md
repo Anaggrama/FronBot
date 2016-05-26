@@ -22,9 +22,19 @@ Cambios:
 *Agregadas teclas configurables para equipar, hablar y pausar.
 *Optimización y limpieza del código.
 
-24/06/2016
+24/05/2016
 -Agregada Version 0.1.10.
 
 Cambios:
 *Agregadas opciones para elegir si se puede usar resucitar y si saca vida.
 *Agregados codigos al .rar porque me tira error el git y no tengo tiempo ni ganas para ver por que.
+
+25/05/2016
+-Agregada Version 0.1.11.
+
+Cambios:
+*Ahora resucitar deja al objetivo sin mana.
+*Agregadas estadisticas de falla y acierto al arco.
+*Arreglado error que causaba que al lanzarle remover a un bot que estaba atacando al usuario inmo le provocaba comportarse como si hubiera sido atacado.
+*Agregado sistema de prioridades segun clase y raza para los bots a la hora de seleccionar un objetivo.
+*Arreglado error donde los bots se quedaban en fila tratando de atacar a un target inmo y mejorado el sistema para hacerlo mas fluido.

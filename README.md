@@ -90,3 +90,10 @@ Cambios:
 *Arreglado error que al intentarse mover en una posicion invalida no actualizaba la posicion correcta.
 *Arreglada la L que no funcionaba del todo bien.
 *Arreglados los errores de pisar a otros usuarios y que impedian moverse en a una posicion vacia.
+
+02/07/2016
+-Agregada Version 0.2.4.
+
+Cambios:
+*Arreglado runtime 9 al unirse otro usuario en determinadas situaciones al intentar renderizar un personaje que no estaba logeado todavia.
+*Agregado sistema para generar lag artificialmente para fines de testeo.

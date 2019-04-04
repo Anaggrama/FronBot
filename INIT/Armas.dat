@@ -1,0 +1,26 @@
+[INIT]
+NumArmas=5
+
+[Arma1]
+Dir1=236 'norte
+Dir2=238
+Dir3=235
+Dir4=237 'sur
+
+[Arma3]
+Dir1=262 'norte
+Dir2=264
+Dir3=261
+Dir4=263 'sur
+
+[ARMA4]
+Dir1=288
+Dir2=290
+Dir3=287
+Dir4=289
+
+[ARMA5]
+Dir1=628
+Dir2=630
+Dir3=627
+Dir4=629

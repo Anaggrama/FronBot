@@ -69,6 +69,7 @@ Public Enum eBotAi
 End Enum
 
 Public RandomBots As Byte
+Public RandomAiBots As Byte
 
 Public Type tItemData
     MinHit As Byte
@@ -207,6 +208,7 @@ Public Const SND_OVER As String = "click2.Wav"
 Public Const SND_DICE As String = "cupdice.Wav"
 Public Const SND_LLUVIAINEND As String = "lluviainend.wav"
 Public Const SND_LLUVIAOUTEND As String = "lluviaoutend.wav"
+Public Const SND_BEGIN As String = "73.wav"
 
 ' Head index of the casper. Used to know if a char is killed
 
@@ -999,7 +1001,7 @@ Public Declare Function GetTickCount Lib "kernel32" () As Long
 
 'para escribir y leer variables
 Public Declare Function writeprivateprofilestring Lib "kernel32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationname As String, ByVal lpKeyname As Any, ByVal lpString As String, ByVal lpFileName As String) As Long
-Public Declare Function getprivateprofilestring Lib "kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationname As String, ByVal lpKeyname As Any, ByVal lpdefault As String, ByVal lpreturnedstring As String, ByVal nsize As Long, ByVal lpFileName As String) As Long
+Public Declare Function getprivateprofilestring Lib "kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationname As String, ByVal lpKeyname As Any, ByVal lpdefault As String, ByVal lpreturnedstring As String, ByVal nSize As Long, ByVal lpFileName As String) As Long
 
 'Teclado
 Public Declare Function GetKeyState Lib "user32" (ByVal nVirtKey As Long) As Integer
@@ -1009,7 +1011,7 @@ Public Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
 
 'Para ejecutar el browser y programas externos
 Public Const SW_SHOWNORMAL As Long = 1
-Public Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hWnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
+Public Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hwnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
 
 'Lista de cabezas
 Public Type tIndiceCabeza

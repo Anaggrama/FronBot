@@ -485,34 +485,34 @@ Sub SwitchMap(ByVal Map As Integer)
     Dim X As Long
     Dim TempInt As Integer
     Dim ByFlags As Byte
-    Dim handle As Integer
+    Dim Handle As Integer
     
-    handle = FreeFile()
+    Handle = FreeFile()
     
-    Open DirMapas & "Mapa" & Map & ".map" For Binary As handle
-    Seek handle, 1
+    Open DirMapas & "Mapa" & Map & ".map" For Binary As Handle
+    Seek Handle, 1
             
     'map Header
-    Get handle, , MapInfo.MapVersion
-    Get handle, , MiCabecera
-    Get handle, , TempInt
-    Get handle, , TempInt
-    Get handle, , TempInt
-    Get handle, , TempInt
+    Get Handle, , MapInfo.MapVersion
+    Get Handle, , MiCabecera
+    Get Handle, , TempInt
+    Get Handle, , TempInt
+    Get Handle, , TempInt
+    Get Handle, , TempInt
     
     'Load arrays
     For Y = YMinMapSize To YMaxMapSize
         For X = XMinMapSize To XMaxMapSize
-            Get handle, , ByFlags
+            Get Handle, , ByFlags
             
             MapData(X, Y).Blocked = (ByFlags And 1)
             
-            Get handle, , MapData(X, Y).Graphic(1).GrhIndex
+            Get Handle, , MapData(X, Y).Graphic(1).GrhIndex
             InitGrh MapData(X, Y).Graphic(1), MapData(X, Y).Graphic(1).GrhIndex
             
             'Layer 2 used?
             If ByFlags And 2 Then
-                Get handle, , MapData(X, Y).Graphic(2).GrhIndex
+                Get Handle, , MapData(X, Y).Graphic(2).GrhIndex
                 InitGrh MapData(X, Y).Graphic(2), MapData(X, Y).Graphic(2).GrhIndex
             Else
                 MapData(X, Y).Graphic(2).GrhIndex = 0
@@ -520,7 +520,7 @@ Sub SwitchMap(ByVal Map As Integer)
                 
             'Layer 3 used?
             If ByFlags And 4 Then
-                Get handle, , MapData(X, Y).Graphic(3).GrhIndex
+                Get Handle, , MapData(X, Y).Graphic(3).GrhIndex
                 InitGrh MapData(X, Y).Graphic(3), MapData(X, Y).Graphic(3).GrhIndex
             Else
                 MapData(X, Y).Graphic(3).GrhIndex = 0
@@ -528,7 +528,7 @@ Sub SwitchMap(ByVal Map As Integer)
                 
             'Layer 4 used?
             If ByFlags And 8 Then
-                Get handle, , MapData(X, Y).Graphic(4).GrhIndex
+                Get Handle, , MapData(X, Y).Graphic(4).GrhIndex
                 InitGrh MapData(X, Y).Graphic(4), MapData(X, Y).Graphic(4).GrhIndex
             Else
                 MapData(X, Y).Graphic(4).GrhIndex = 0
@@ -536,7 +536,7 @@ Sub SwitchMap(ByVal Map As Integer)
             
             'Trigger used?
             If ByFlags And 16 Then
-                Get handle, , MapData(X, Y).Trigger
+                Get Handle, , MapData(X, Y).Trigger
             Else
                 MapData(X, Y).Trigger = 0
             End If
@@ -551,7 +551,7 @@ Sub SwitchMap(ByVal Map As Integer)
         Next X
     Next Y
     
-    Close handle
+    Close Handle
     
     MapInfo.name = ""
     MapInfo.Music = ""
@@ -666,7 +666,7 @@ Sub Main()
     ServersRecibidos = True
     Call InicializarNombres
     
-    If Not InitTileEngine(frmMain.hWnd, 149, 19, 32, 32, 13, 17, 9, 8, 8, 0.018) Then
+    If Not InitTileEngine(frmMain.hwnd, 149, 19, 32, 32, 13, 17, 9, 8, 8, 0.018) Then
         Call CloseClient
     End If
 UserMap = 1
@@ -675,7 +675,7 @@ UserMap = 1
     Call CargarAnimEscudos
     Call CargarColores
     'Inicializamos el sonido
-    Call Audio.Initialize(DirectX, frmMain.hWnd, App.path & "\" & Config_Inicio.DirSonidos & "\", App.path & "\" & Config_Inicio.DirMusica & "\")
+    Call Audio.Initialize(DirectX, frmMain.hwnd, App.path & "\" & Config_Inicio.DirSonidos & "\", App.path & "\" & Config_Inicio.DirMusica & "\")
     'Enable / Disable audio
     Audio.MusicActivated = Not ClientSetup.bNoMusic
     Audio.SoundActivated = Not ClientSetup.bNoSound
@@ -701,7 +701,7 @@ UserMap = 1
     Call MainTimer.Start(TimersIndex.Lan)
 
     'Set the dialog's font
-    Dialogos.font = frmMain.font
+    Dialogos.Font = frmMain.Font
 
     lFrameTimer = GetTickCount
     
@@ -742,11 +742,11 @@ UserMap = 1
     Call CloseClient
 End Sub
 
-Sub WriteVar(ByVal file As String, ByVal Main As String, ByVal Var As String, ByVal Value As String)
+Sub WriteVar(ByVal file As String, ByVal Main As String, ByVal Var As String, ByVal value As String)
 '*****************************************************************
 'Writes a var to a text file
 '*****************************************************************
-    writeprivateprofilestring Main, Var, Value, file
+    writeprivateprofilestring Main, Var, value, file
 End Sub
 
 Function GetVar(ByVal file As String, ByVal Main As String, ByVal Var As String) As String
@@ -1363,8 +1363,14 @@ Public Sub CrearChar(ByVal CharIndex As Integer)
 
     If RandomBots Then
         If charlist(CharIndex).Bot = 1 Then
-            charlist(CharIndex).Ai = RandomNumber(0, 6)
             charlist(CharIndex).Raza = RandomNumber(0, 4)
+            charlist(CharIndex).Genero = RandomNumber(0, 1)
+        End If
+    End If
+    
+    If RandomAiBots Then
+        If charlist(CharIndex).Bot = 1 Then
+            charlist(CharIndex).Ai = RandomNumber(0, 6)
         End If
     End If
     

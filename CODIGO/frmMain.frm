@@ -63,6 +63,40 @@ Begin VB.Form frmMain
       Type            =   1
       Urgent          =   0   'False
    End
+   Begin FronBot.lvButtons_H lvButtons_H1 
+      Height          =   315
+      Left            =   7530
+      TabIndex        =   18
+      Top             =   1830
+      Width           =   915
+      _ExtentX        =   1614
+      _ExtentY        =   556
+      Caption         =   "/Salir"
+      CapAlign        =   2
+      BackStyle       =   2
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      cFore           =   255
+      cFHover         =   255
+      cGradient       =   0
+      Mode            =   0
+      Value           =   0   'False
+      cBack           =   0
+   End
+   Begin MSWinsockLib.Winsock Winsock1 
+      Left            =   6240
+      Top             =   1920
+      _ExtentX        =   741
+      _ExtentY        =   741
+      _Version        =   393216
+   End
    Begin VB.CommandButton cmdCambiarPj 
       Caption         =   "Cambiar Personaje"
       Height          =   315
@@ -132,13 +166,6 @@ Begin VB.Form frmMain
       Top             =   3120
       Width           =   2280
    End
-   Begin MSWinsockLib.Winsock Winsock2 
-      Left            =   5760
-      Top             =   1920
-      _ExtentX        =   741
-      _ExtentY        =   741
-      _Version        =   393216
-   End
    Begin VB.TextBox SendTxt 
       BackColor       =   &H00000000&
       BeginProperty Font 
@@ -160,7 +187,7 @@ Begin VB.Form frmMain
       ToolTipText     =   "Chat"
       Top             =   1800
       Visible         =   0   'False
-      Width           =   8190
+      Width           =   7290
    End
    Begin VB.Timer macrotrabajo 
       Enabled         =   0   'False
@@ -177,13 +204,6 @@ Begin VB.Form frmMain
       Interval        =   750
       Left            =   5760
       Top             =   2520
-   End
-   Begin MSWinsockLib.Winsock Winsock1 
-      Left            =   6240
-      Top             =   1920
-      _ExtentX        =   741
-      _ExtentY        =   741
-      _Version        =   393216
    End
    Begin VB.Timer Second 
       Enabled         =   0   'False
@@ -453,7 +473,7 @@ Begin VB.Form frmMain
       EndProperty
       Height          =   450
       Left            =   10320
-      MouseIcon       =   "frmMain.frx":F1F0
+      MouseIcon       =   "frmMain.frx":F1EF
       MousePointer    =   99  'Custom
       TabIndex        =   7
       Top             =   2400
@@ -462,7 +482,7 @@ Begin VB.Form frmMain
    Begin VB.Image cmdInfo 
       Height          =   525
       Left            =   10560
-      MouseIcon       =   "frmMain.frx":F342
+      MouseIcon       =   "frmMain.frx":F341
       MousePointer    =   99  'Custom
       Top             =   5400
       Visible         =   0   'False
@@ -471,7 +491,7 @@ Begin VB.Form frmMain
    Begin VB.Image cmdMoverHechiDown 
       Height          =   240
       Left            =   11430
-      MouseIcon       =   "frmMain.frx":F494
+      MouseIcon       =   "frmMain.frx":F493
       MousePointer    =   99  'Custom
       Top             =   3960
       Visible         =   0   'False
@@ -480,7 +500,7 @@ Begin VB.Form frmMain
    Begin VB.Image cmdMoverHechiUp 
       Height          =   240
       Left            =   11430
-      MouseIcon       =   "frmMain.frx":F5E6
+      MouseIcon       =   "frmMain.frx":F5E5
       MousePointer    =   99  'Custom
       Top             =   3600
       Visible         =   0   'False
@@ -509,7 +529,7 @@ Begin VB.Form frmMain
    Begin VB.Image CmdLanzar 
       Height          =   495
       Left            =   8880
-      MouseIcon       =   "frmMain.frx":F738
+      MouseIcon       =   "frmMain.frx":F737
       MousePointer    =   99  'Custom
       Top             =   5400
       Visible         =   0   'False
@@ -528,7 +548,7 @@ Begin VB.Form frmMain
       EndProperty
       Height          =   435
       Left            =   8880
-      MouseIcon       =   "frmMain.frx":F88A
+      MouseIcon       =   "frmMain.frx":F889
       MousePointer    =   99  'Custom
       TabIndex        =   6
       Top             =   2400
@@ -960,6 +980,7 @@ Private Sub Cuenta_Timer()
         CuentaR = CuentaR - 1
     Else
         Call ServerSendData(SendTarget.ToAll, UserCharIndex, PrepareMessageConsoleMsg("¡El combate ha iniciado!.", FontTypeNames.FONTTYPE_PARTY))
+        Call ServerSendData(SendTarget.ToAll, UserCharIndex, PrepareMessagePlayWave(73, 50, 50))
         Cuenta.Enabled = False
         Call ServerSendData(SendTarget.ToAll, UserCharIndex, PrepareMessageCuentaToggle(0))
     End If
@@ -990,6 +1011,10 @@ End Sub
 
 Private Sub InvEqu_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     LastPressed.ToggleToNormal
+End Sub
+
+Private Sub lvButtons_H1_Click()
+    Call WriteQuit
 End Sub
 
 Private Sub packetResend_Timer()
@@ -1447,8 +1472,3 @@ Private Sub Test_Timer()
     
 End Sub
 
-Private Sub Winsock2_Connect()
-#If SeguridadAlkon = 1 Then
-    Call modURL.ProcessRequest
-#End If
-End Sub

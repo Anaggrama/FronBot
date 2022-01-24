@@ -228,24 +228,24 @@ End Sub
 '
 ' @return   True if no errors occured, false otherwise.
 
-Public Function Initialize(ByRef dX As DirectX7, ByVal hWnd As Long, ByVal sound_path As String, ByVal music_path As String) As Boolean
+Public Function Initialize(ByRef dX As DirectX7, ByVal hwnd As Long, ByVal sound_path As String, ByVal music_path As String) As Boolean
 '***************************************************
 'Author: Juan Martín Sotuyo Dodero (Maraxus)
 'Last Modification: 16/03/04
 'Creates all DS and DM objects
 '***************************************************
-On Error GoTo Errhandler
+On Error GoTo ErrHandler
     
     ' Prevent multiple creations
     If inited Then Exit Function
     
     'Validate DX object
-    If dX Is Nothing Then GoTo Errhandler
+    If dX Is Nothing Then GoTo ErrHandler
     
     'Initialize DirectSound
     Set DirectSound = dX.DirectSoundCreate("")
     
-    Call DirectSound.SetCooperativeLevel(hWnd, DSSCL_PRIORITY)
+    Call DirectSound.SetCooperativeLevel(hwnd, DSSCL_PRIORITY)
     
     'Set sound path
     SoundPath = sound_path
@@ -254,7 +254,7 @@ On Error GoTo Errhandler
     SndVolume = 0
     
     'Initialize DirectMusic
-    Music = InitializedirectMusic(dX, hWnd)
+    Music = InitializedirectMusic(dX, hwnd)
     
     'Set music path
     MusicPath = music_path
@@ -273,7 +273,7 @@ On Error GoTo Errhandler
     Initialize = True
 Exit Function
 
-Errhandler:
+ErrHandler:
 End Function
 
 ''
@@ -284,17 +284,17 @@ End Function
 '
 ' @return   True if no errors occured, false otherwise.
 
-Private Function InitializedirectMusic(ByRef dX As DirectX7, ByVal hWnd As Long) As Boolean
+Private Function InitializedirectMusic(ByRef dX As DirectX7, ByVal hwnd As Long) As Boolean
 '***************************************************
 'Author: Juan Martín Sotuyo Dodero (Maraxus)
 'Last Modification: 16/03/04
 'Initialize DM. Returns false if music isn't supported by HW
 '***************************************************
-On Error GoTo Errhandler
+On Error GoTo ErrHandler
     Set Loader = DirectX.DirectMusicLoaderCreate()
     
     Set Performance = dX.DirectMusicPerformanceCreate()
-    Call Performance.Init(DirectSound, hWnd)
+    Call Performance.Init(DirectSound, hwnd)
     Call Performance.SetMasterAutoDownload(True)        'Enable auto download of instruments
     
     'Set to port default, 1 channel group is enough for MIDIs
@@ -303,7 +303,7 @@ On Error GoTo Errhandler
     InitializedirectMusic = True
 Exit Function
 
-Errhandler:
+ErrHandler:
 End Function
 
 ''
@@ -323,7 +323,7 @@ Public Function PlayWave(ByVal FileName As String, Optional ByVal srcX As Byte =
 'Last Modified by: Franco Zeoli (Noich)
 'Added support for 3D sound effects.
 '***************************************************
-On Error GoTo Errhandler
+On Error GoTo ErrHandler
     Dim bufferIndex As Long
     
     If Not SoundActivated Then Exit Function
@@ -359,7 +359,7 @@ On Error GoTo Errhandler
     End If
 Exit Function
 
-Errhandler:
+ErrHandler:
 End Function
 
 Private Sub ResetSoundValues()
@@ -486,7 +486,7 @@ Private Function LoadWave(ByVal FileName As String, ByVal looping As LoopStyle) 
 'Loads a new wave into memory (if it's not already loaded) and returns
 'the buffer index
 '***************************************************
-On Error GoTo Errhandler
+On Error GoTo ErrHandler
     Dim bufferDesc As DSBUFFERDESC
     Dim waveFormat As WAVEFORMATEX
     Dim i As Long
@@ -568,7 +568,7 @@ On Error GoTo Errhandler
     LoadWave = i
 Exit Function
 
-Errhandler:
+ErrHandler:
 End Function
 
 ''
@@ -677,7 +677,7 @@ Public Function PlayMIDI(Optional ByVal file As String = "", Optional ByVal Loop
 'Last Modification: 16/03/04
 'Loads a midi and start to play it
 '***************************************************
-On Error GoTo Errhandler
+On Error GoTo ErrHandler
     If LenB(file) > 0 Then _
         CurrentMusicFile = file
     
@@ -704,7 +704,7 @@ On Error GoTo Errhandler
     PlayMIDI = True
 Exit Function
 
-Errhandler:
+ErrHandler:
 End Function
 
 ''
@@ -720,7 +720,7 @@ Private Function LoadMidi(ByVal file As String) As Boolean
 'Last Modification: 16/03/04
 'Loads a midi to memory
 '***************************************************
-On Error GoTo Errhandler
+On Error GoTo ErrHandler
     If Not FileExist(MusicPath & file, vbArchive) Then Exit Function
     
     Call StopMidi
@@ -739,7 +739,7 @@ On Error GoTo Errhandler
     LoadMidi = True
 Exit Function
 
-Errhandler:
+ErrHandler:
 End Function
 
 ''
@@ -751,13 +751,13 @@ Public Sub StopMidi()
 'Last Modification: 16/03/04
 'Stops playing a midi
 '***************************************************
-On Error GoTo Errhandler
+On Error GoTo ErrHandler
     If PlayingMusic Then
         Call Performance.Stop(Segment, SegState, 0, 0)
     End If
 Exit Sub
 
-Errhandler:
+ErrHandler:
 End Sub
 
 ''

@@ -1,70 +1,68 @@
 VERSION 5.00
 Begin VB.Form frmStart 
+   BackColor       =   &H00000000&
    BorderStyle     =   0  'None
    Caption         =   "FronBot"
-   ClientHeight    =   6705
+   ClientHeight    =   6825
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   4950
+   ClientWidth     =   8700
    Icon            =   "frmStart.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   6705
-   ScaleWidth      =   4950
+   ScaleHeight     =   6825
+   ScaleWidth      =   8700
    StartUpPosition =   2  'CenterScreen
-   Begin VB.CommandButton cmdRemover 
-      Caption         =   "Remover bot"
+   Begin VB.CheckBox chkRandomAi 
+      BackColor       =   &H00000000&
+      ForeColor       =   &H0000FFFF&
       Height          =   255
-      Left            =   1920
-      TabIndex        =   12
-      Top             =   960
-      Width           =   1215
-   End
-   Begin VB.CommandButton cmdAgregar 
-      Caption         =   "Agregar bot"
-      Height          =   255
-      Left            =   1920
-      TabIndex        =   11
-      Top             =   720
-      Width           =   1215
+      Left            =   2280
+      TabIndex        =   22
+      Top             =   5160
+      Width           =   255
    End
    Begin VB.ListBox lstTeam2 
-      BackColor       =   &H8000000A&
-      Height          =   1815
-      Left            =   3240
+      BackColor       =   &H00000000&
+      ForeColor       =   &H008080FF&
+      Height          =   2400
+      Left            =   2550
       TabIndex        =   10
-      Top             =   720
-      Width           =   1455
+      Top             =   1290
+      Width           =   2265
    End
    Begin VB.ListBox lstTeam1 
-      BackColor       =   &H8000000A&
-      Height          =   1815
-      Left            =   240
+      BackColor       =   &H00000000&
+      ForeColor       =   &H00FF8080&
+      Height          =   2400
+      Left            =   150
       TabIndex        =   9
-      Top             =   720
-      Width           =   1455
+      Top             =   1290
+      Width           =   2265
    End
    Begin VB.CheckBox chkResuVida 
       BackColor       =   &H00000000&
       Caption         =   "Check1"
+      ForeColor       =   &H0000FFFF&
       Height          =   255
-      Left            =   4320
+      Left            =   1920
       TabIndex        =   8
-      Top             =   5760
+      Top             =   6180
       Width           =   255
    End
    Begin VB.CheckBox chkResu 
       BackColor       =   &H00000000&
       Caption         =   "Check1"
+      ForeColor       =   &H0000FFFF&
       Height          =   255
-      Left            =   1560
+      Left            =   1200
       TabIndex        =   6
-      Top             =   5760
+      Top             =   5730
       Width           =   255
    End
    Begin VB.ComboBox cmbBalance 
-      BackColor       =   &H80000006&
+      BackColor       =   &H00000000&
       BeginProperty Font 
          Name            =   "Arial"
          Size            =   8.25
@@ -74,24 +72,25 @@ Begin VB.Form frmStart
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H80000005&
+      ForeColor       =   &H0000FFFF&
       Height          =   330
-      Left            =   1560
+      Left            =   3720
       Style           =   2  'Dropdown List
       TabIndex        =   3
-      Top             =   5280
+      Top             =   4110
       Width           =   1575
    End
    Begin VB.CheckBox chkRandom 
       BackColor       =   &H00000000&
+      ForeColor       =   &H0000FFFF&
       Height          =   255
-      Left            =   2040
+      Left            =   1950
       TabIndex        =   1
-      Top             =   4800
+      Top             =   4650
       Width           =   255
    End
    Begin VB.ComboBox cmbDificultad 
-      BackColor       =   &H80000006&
+      BackColor       =   &H00000000&
       BeginProperty Font 
          Name            =   "Arial"
          Size            =   8.25
@@ -101,22 +100,167 @@ Begin VB.Form frmStart
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H80000005&
+      ForeColor       =   &H0000FFFF&
       Height          =   330
-      Left            =   1575
+      ItemData        =   "frmStart.frx":F172
+      Left            =   1185
+      List            =   "frmStart.frx":F174
       Style           =   2  'Dropdown List
       TabIndex        =   0
-      Top             =   4320
+      Top             =   4110
       Width           =   1335
+   End
+   Begin FronBot.lvButtons_H cmdAgregar 
+      Height          =   675
+      Left            =   4920
+      TabIndex        =   20
+      Top             =   2250
+      Width           =   1785
+      _ExtentX        =   3149
+      _ExtentY        =   1191
+      Caption         =   "&Nuevo Bot"
+      CapAlign        =   2
+      BackStyle       =   2
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      cFore           =   8454016
+      cFHover         =   8438015
+      cBhover         =   0
+      LockHover       =   2
+      cGradient       =   0
+      Gradient        =   4
+      Mode            =   0
+      Value           =   0   'False
+      cBack           =   16384
+   End
+   Begin FronBot.lvButtons_H cmdRemover 
+      Height          =   675
+      Left            =   4920
+      TabIndex        =   21
+      Top             =   3030
+      Width           =   1785
+      _ExtentX        =   3149
+      _ExtentY        =   1191
+      Caption         =   "&Quitar Bot"
+      CapAlign        =   2
+      BackStyle       =   2
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      cFore           =   8454016
+      cFHover         =   8438015
+      cBhover         =   0
+      LockHover       =   2
+      cGradient       =   0
+      Gradient        =   4
+      Mode            =   0
+      Value           =   0   'False
+      cBack           =   64
+   End
+   Begin VB.Label Label 
+      BackColor       =   &H00FFFFFF&
+      BackStyle       =   0  'Transparent
+      Caption         =   "Inteligencia Aleatoria:"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H0000FF00&
+      Height          =   255
+      Index           =   7
+      Left            =   240
+      TabIndex        =   23
+      Top             =   5190
+      Width           =   2265
+   End
+   Begin VB.Label Label 
+      BackColor       =   &H00FFFFFF&
+      BackStyle       =   0  'Transparent
+      Caption         =   "Equipo Rojo:"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H008080FF&
+      Height          =   255
+      Index           =   6
+      Left            =   2550
+      TabIndex        =   19
+      Top             =   930
+      Width           =   1455
+   End
+   Begin VB.Label Label 
+      BackColor       =   &H00FFFFFF&
+      BackStyle       =   0  'Transparent
+      Caption         =   "Equipo Azul:"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00FF8080&
+      Height          =   255
+      Index           =   1
+      Left            =   150
+      TabIndex        =   18
+      Top             =   930
+      Width           =   1455
+   End
+   Begin VB.Label Label4 
+      AutoSize        =   -1  'True
+      BackColor       =   &H00000000&
+      Caption         =   "Configuración de nueva partida"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   18
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H0000FF00&
+      Height          =   435
+      Left            =   210
+      TabIndex        =   17
+      Top             =   270
+      Width           =   5445
    End
    Begin VB.Label lblTeam 
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
       ForeColor       =   &H00FFFFFF&
       Height          =   195
-      Left            =   2040
-      TabIndex        =   18
-      Top             =   1320
+      Left            =   1980
+      TabIndex        =   16
+      Top             =   1290
       Width           =   45
    End
    Begin VB.Label Label 
@@ -132,12 +276,12 @@ Begin VB.Form frmStart
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H00FFFFFF&
+      ForeColor       =   &H0000FF00&
       Height          =   255
       Index           =   0
-      Left            =   600
-      TabIndex        =   17
-      Top             =   4320
+      Left            =   210
+      TabIndex        =   15
+      Top             =   4110
       Width           =   975
    End
    Begin VB.Label lblNivel 
@@ -145,9 +289,9 @@ Begin VB.Form frmStart
       BackStyle       =   0  'Transparent
       ForeColor       =   &H00FFFFFF&
       Height          =   195
-      Left            =   2040
-      TabIndex        =   16
-      Top             =   2280
+      Left            =   1950
+      TabIndex        =   14
+      Top             =   2850
       Width           =   45
    End
    Begin VB.Label lblGenero 
@@ -155,9 +299,9 @@ Begin VB.Form frmStart
       BackStyle       =   0  'Transparent
       ForeColor       =   &H00FFFFFF&
       Height          =   195
-      Left            =   2040
-      TabIndex        =   15
-      Top             =   2040
+      Left            =   1950
+      TabIndex        =   13
+      Top             =   2610
       Width           =   45
    End
    Begin VB.Label lblRaza 
@@ -165,9 +309,9 @@ Begin VB.Form frmStart
       BackStyle       =   0  'Transparent
       ForeColor       =   &H00FFFFFF&
       Height          =   195
-      Left            =   2040
-      TabIndex        =   14
-      Top             =   1800
+      Left            =   1950
+      TabIndex        =   12
+      Top             =   2370
       Width           =   45
    End
    Begin VB.Label lblClase 
@@ -175,9 +319,9 @@ Begin VB.Form frmStart
       BackStyle       =   0  'Transparent
       ForeColor       =   &H00FFFFFF&
       Height          =   195
-      Left            =   2040
-      TabIndex        =   13
-      Top             =   1560
+      Left            =   1980
+      TabIndex        =   11
+      Top             =   1530
       Width           =   45
    End
    Begin VB.Label Label 
@@ -194,12 +338,12 @@ Begin VB.Form frmStart
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H00FFFFFF&
+      ForeColor       =   &H0000FF00&
       Height          =   195
       Index           =   5
-      Left            =   2640
+      Left            =   240
       TabIndex        =   7
-      Top             =   5760
+      Top             =   6180
       Width           =   1665
    End
    Begin VB.Label Label 
@@ -215,18 +359,18 @@ Begin VB.Form frmStart
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H00FFFFFF&
+      ForeColor       =   &H0000FF00&
       Height          =   195
       Index           =   4
-      Left            =   600
+      Left            =   240
       TabIndex        =   5
-      Top             =   5760
+      Top             =   5730
       Width           =   945
    End
    Begin VB.Label Label 
       BackColor       =   &H00FFFFFF&
       BackStyle       =   0  'Transparent
-      Caption         =   "Bots Aleatorios:"
+      Caption         =   "Aspecto Aleatorio:"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -236,13 +380,13 @@ Begin VB.Form frmStart
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H00FFFFFF&
+      ForeColor       =   &H0000FF00&
       Height          =   255
       Index           =   3
-      Left            =   600
+      Left            =   210
       TabIndex        =   4
-      Top             =   4800
-      Width           =   1455
+      Top             =   4680
+      Width           =   2085
    End
    Begin VB.Label Label 
       BackColor       =   &H00FFFFFF&
@@ -257,25 +401,26 @@ Begin VB.Form frmStart
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H00FFFFFF&
+      ForeColor       =   &H0000FF00&
       Height          =   255
       Index           =   2
-      Left            =   600
+      Left            =   2760
       TabIndex        =   2
-      Top             =   5280
+      Top             =   4110
       Width           =   855
    End
    Begin VB.Image imgCruz 
       Height          =   375
-      Left            =   4480
-      Top             =   120
+      Left            =   8160
+      Top             =   150
       Width           =   375
    End
    Begin VB.Image imgPelear 
-      Height          =   375
-      Left            =   1755
-      Top             =   3600
-      Width           =   1815
+      Height          =   705
+      Left            =   6120
+      Stretch         =   -1  'True
+      Top             =   5760
+      Width           =   2235
    End
 End
 Attribute VB_Name = "frmStart"
@@ -299,6 +444,7 @@ Public LastPressed As clsGraphicalButton
 Private ListSelected As Byte
 
 Private Sub cmdAgregar_Click()
+    Call Audio.PlayWave(SND_CLICK)
     frmPersonaje.Modo = 3
     frmPersonaje.Show
 End Sub
@@ -332,6 +478,7 @@ Private Sub cmdRemover_Click()
             lstTeam2.RemoveItem lstTeam2.ListIndex
         End If
     End If
+    Call Audio.PlayWave(SND_CLICK)
 End Sub
 
 Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
@@ -345,8 +492,6 @@ Private Sub Form_Load()
     Set BotonPelear = New clsGraphicalButton
     Set BotonCruz = New clsGraphicalButton
     Set LastPressed = New clsGraphicalButton
-    
-    Me.Picture = LoadPicture(App.path & "\Graficos\configurarbot.jpg")
     
     Call BotonPelear.Initialize(imgPelear, App.path & "\Graficos\Boton_Combatir_Normal.jpg", _
                                     App.path & "\Graficos\Boton_Combatir_Hover.jpg", _
@@ -436,9 +581,9 @@ Private Sub Form_Load()
     Loop
     cmbBalance.ListIndex = 0
     
-    chkRandom.Value = RandomBots
-    chkResu.Value = SinResu
-    chkResuVida.Value = ResuNoVida
+    chkRandom.value = RandomBots
+    chkResu.value = SinResu
+    chkResuVida.value = ResuNoVida
 End Sub
 
 Private Sub imgCruz_Click()
@@ -467,9 +612,10 @@ Private Sub imgPelear_Click()
             ReDim Team2(0 To 0) As Integer
         End If
     End If
-    RandomBots = chkRandom.Value
-    SinResu = chkResu.Value
-    ResuNoVida = chkResuVida.Value
+    RandomBots = chkRandom.value
+    RandomAiBots = chkRandomAi.value
+    SinResu = chkResu.value
+    ResuNoVida = chkResuVida.value
 
     If frmMain.Visible = False Then
         frmPersonaje.Modo = 1
